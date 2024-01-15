@@ -25,7 +25,6 @@
             <nav class="nav-links show">
                 <a href="{{ route('user_home') }}" class="{{ request()->routeIs('user_home') ? 'active' : '' }}">Home</a>
                 <a href="{{ route('user_catalog') }}" class="{{ request()->routeIs('user_catalog') ? 'active' : '' }}">Catalog</a>
-                <a href="#order_status" class="{{ request()->routeIs('order_status') ? 'active' : '' }}">Order Status</a>
                 <a href="{{ route('distributor.index') }}" class="{{ request()->routeIs('distributor.index') ? 'active' : '' }}">Distributors</a>
                 <a href="{{ route('upload.index') }}" class="{{ request()->routeIs('upload.index') ? 'active' : '' }}">Upload</a>
                 <form id="logout-form " action="{{ route('logout') }}" method="POST">
