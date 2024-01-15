@@ -22,7 +22,7 @@ class UploadController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'document_file' => 'required|max:5048', // Adjust the allowed file types and size as needed
+            'document_file' => 'required|max:5048',
             'author' => 'required|string|max:255',
         ]);
 
@@ -30,9 +30,8 @@ class UploadController extends Controller
         if ($request->hasFile('document_file')) {
             $file = $request->file('document_file');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public'); // Assuming you have a 'public/uploads' disk in your filesystem
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
 
-            // Save the data to the database
             Upload::create([
                 'title' => $request->input('title'),
                 'document_file' => $filePath,

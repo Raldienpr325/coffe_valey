@@ -25,9 +25,17 @@
                             <td>{{ $item->title }}</td>
                             <td>
                                 @if ($item->document_file)
-                                    <img src="{{ asset('storage/' . $item->document_file) }}" alt="Document Image" width="100">
+                                    @php
+                                        $extension = pathinfo($item->document_file, PATHINFO_EXTENSION);
+                                    @endphp
+
+                                    @if (in_array($extension, ['pdf']))
+                                        <embed src="{{ asset('storage/' . $item->document_file) }}" type="application/pdf" width="100%" height="200px" />
+                                    @else
+                                        <img src="{{ asset('storage/' . $item->document_file) }}" alt="Document Image" width="100">
+                                    @endif
                                 @else
-                                    No Image
+                                    No File
                                 @endif
                             </td>
                             <td>{{ $item->Author }}</td>

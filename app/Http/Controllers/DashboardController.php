@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
         $data = Bean::with('daily_bean')
                 ->whereHas('daily_bean', function ($query) {
-                    $query->where('sale_price', '>', 50);
+                    $query->where('sale_price', '>=', 0);
                 })
                 ->get();
         return view('home.index',compact('data'));

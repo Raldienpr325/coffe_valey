@@ -22,9 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [DashboardController::class,'index'])->name('home');
 
-Route::get('/user-home',[DashboardController::class,'user_home'])->name('user_home');
+Route::get('/home',[DashboardController::class,'user_home'])->name('user_home');
 Route::get('/user-catalog',[DashboardController::class,'user_catalog'])->name('user_catalog');
 Route::resource('distributor',DistributorController::class)->except('show');
 Route::resource('upload',UploadController::class)->except('show');
