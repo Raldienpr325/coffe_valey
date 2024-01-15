@@ -17,10 +17,18 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 0; $i < 10; $i++) {
-            DB::table('bean')->insert([
+            // Seed the 'bean' table
+            $beanId = DB::table('bean')->insertGetId([
                 'name' => $faker->word,
                 'description' => $faker->sentence,
-                'price' => $faker->randomFloat(2, 1, 100), // Generate a random float between 1 and 100 with 2 decimal places
+                'price' => $faker->randomFloat(2, 1, 100),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            DB::table('daily_bean')->insert([
+                'bean_id' => $beanId,
+                'sale_price' => $faker->randomFloat(2, 1, 100),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

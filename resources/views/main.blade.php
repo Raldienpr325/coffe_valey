@@ -156,7 +156,7 @@
                 <a href="{{ route('user_catalog') }}">Catalog</a>
                 <a href="#order_status">Order Status</a>
                 <a href="{{ route('distributor.index') }}">Distributors</a>
-                <a href="{{ route('user_upload') }}">Upload</a>
+                <a href="{{ route('upload.index') }}">Upload</a>
                 <form id="logout-form " action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger mr-2"

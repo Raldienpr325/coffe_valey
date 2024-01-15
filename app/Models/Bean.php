@@ -16,4 +16,8 @@ class Bean extends Model
         'description',
         'price'
     ];
+
+    public function daily_bean(){
+        return $this->hasOne(Daily_bean::class, 'bean_id');
+    }
 }

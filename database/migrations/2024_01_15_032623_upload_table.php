@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('distributors', function (Blueprint $table) {
+        Schema::create('upload', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('city');
-            $table->string('region');
-            $table->string('country');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('title');
+            $table->string('document_file');
+            $table->string('Author');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('distributors');
+        Schema::dropIfExists('upload');
     }
 };

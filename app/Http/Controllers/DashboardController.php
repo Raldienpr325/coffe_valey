@@ -15,7 +15,12 @@ class DashboardController extends Controller
 
     public function user_home()
     {
-        return view('home.index');
+        $data = Bean::with('daily_bean')
+                ->whereHas('daily_bean', function ($query) {
+                    $query->where('sale_price', '>', 50);
+                })
+                ->get();
+        return view('home.index',compact('data'));
     }
 
     public function user_catalog()
@@ -24,9 +29,4 @@ class DashboardController extends Controller
         return view('catalog.index',compact('data'));
     }
 
-
-    public function user_upload()
-    {
-        return view('upload.index');
-    }
 }
